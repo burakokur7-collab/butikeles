@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>butikeless | Kadın Giyim</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f8f5f0;
+      color: #171717;
+    }
+
+    /* HEADER */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(248, 245, 240, 0.96);
+      border-bottom: 1px solid #ded8d0;
+      backdrop-filter: blur(10px);
+    }
+
+    .nav {
+      max-width: 1200px;
+      margin: auto;
+      padding: 20px 25px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-size: 26px;
+      font-weight: 800;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+
+    nav {
+      display: flex;
+      gap: 28px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #222;
+      font-size: 14px;
+      font-weight: 600;
+      transition: 0.2s;
+    }
+
+    nav a:hover {
+      color: #9a7b48;
+    }
+
+    /* HERO */
+    .hero {
+      min-height: 520px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 70px 20px;
+      background:
+        linear-gradient(rgba(248,245,240,.72), rgba(248,245,240,.92)),
+        radial-gradient(circle at center, #e8dfd3, #f8f5f0 65%);
+    }
+
+    .hero-content {
+      max-width: 750px;
+    }
+
+    .hero small {
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: #927447;
+      font-weight: 700;
+    }
+
+    .hero h1 {
+      margin: 18px 0;
+      font-family: Georgia, serif;
+      font-size: clamp(42px, 7vw, 76px);
+      font-weight: 500;
+    }
+
+    .hero p {
+      color: #555;
+      font-size: 18px;
+      margin-bottom: 30px;
+    }
+
+    .button {
+      display: inline-block;
+      background: #171717;
+      color: white;
+      padding: 15px 30px;
+      text-decoration: none;
+      font-size: 14px;
+      letter-spacing: 1px;
+      transition: .25s;
+    }
+
+    .button:hover {
+      background: #9a7b48;
+    }
+
+    /* GENERAL */
+    section {
+      max-width: 1200px;
+      margin: auto;
+      padding: 80px 25px;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 45px;
+    }
+
+    .section-title span {
+      color: #9a7b48;
+      font-size: 12px;
+      font-weight: bold;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+
+    .section-title h2 {
+      font-family: Georgia, serif;
+      font-size: 38px;
+      font-weight: 500;
+      margin-top: 10px;
+    }
+
+    /* CATEGORIES */
+    .categories {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 15px;
+    }
+
+    .category {
+      height: 180px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #e8dfd3;
+      text-decoration: none;
+      color: #171717;
+      font-family: Georgia, serif;
+      font-size: 22px;
+      transition: .3s;
+    }
+
+    .category:hover {
+      transform: translateY(-5px);
+      background: #ded2c3;
+    }
+
+    /* PRODUCTS */
+    .products {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 25px;
+    }
+
+    .product {
+      background: white;
+      border: 1px solid #e3ded7;
+      overflow: hidden;
+      transition: .3s;
+    }
+
+    .product:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 35px rgba(0,0,0,.08);
+    }
+
+    .product-image {
+      height: 350px;
+      background:
+        linear-gradient(135deg, #eee8df, #d9cfc1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .product-image span {
+      font-family: Georgia, serif;
+      font-size: 22px;
+      color: #766958;
+    }
+
+    .product-info {
+      padding: 20px;
+    }
+
+    .product-info h3 {
+      font-family: Georgia, serif;
+      font-size: 21px;
+      font-weight: 500;
+      margin-bottom: 10px;
+    }
+
+    .price {
+      font-size: 17px;
+      font-weight: bold;
+    }
+
+    /* ABOUT */
+    .about {
+      background: #171717;
+      color: white;
+      max-width: none;
+      text-align: center;
+    }
+
+    .about-inner {
+      max-width: 750px;
+      margin: auto;
+    }
+
+    .about .section-title span {
+      color: #c9a66b;
+    }
+
+    .about p {
+      color: #d0d0d0;
+      line-height: 1.8;
+      font-size: 16px;
+    }
+
+    /* CONTACT */
+    .contact {
+      text-align: center;
+    }
+
+    .contact-box {
+      margin: auto;
+      max-width: 600px;
+      background: white;
+      padding: 40px 25px;
+      border: 1px solid #e1dbd3;
+    }
+
+    .contact-box p {
+      color: #555;
+      margin-bottom: 25px;
+    }
+
+    .phone {
+      display: block;
+      color: #171717;
+      font-size: 22px;
+      font-weight: bold;
+      text-decoration: none;
+      margin-bottom: 20px;
+    }
+
+    /* FOOTER */
+    footer {
+      background: #111;
+      color: #aaa;
+      text-align: center;
+      padding: 30px 20px;
+      font-size: 13px;
+    }
+
+    footer strong {
+      color: white;
+    }
+
+    /* MOBILE */
+    @media (max-width: 850px) {
+      nav {
+        gap: 12px;
+      }
+
+      nav a {
+        font-size: 12px;
+      }
+
+      .categories {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .products {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .product-image {
+        height: 280px;
+      }
+    }
+
+    @media (max-width: 550px) {
+      .nav {
+        padding: 17px 15px;
+      }
+
+      .logo {
+        font-size: 20px;
+        letter-spacing: 2px;
+      }
+
+      nav {
+        display: none;
+      }
+
+      .hero {
+        min-height: 470px;
+      }
+
+      section {
+        padding: 60px 15px;
+      }
+
+      .categories {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .products {
+        grid-template-columns: 1fr;
+      }
+
+      .product-image {
+        height: 360px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="nav">
+      <div class="logo">butikeless</div>
+
+      <nav>
+        <a href="#urunler">Ürünler</a>
+        <a href="#kategoriler">Kategoriler</a>
+        <a href="#hakkimizda">Hakkımızda</a>
+        <a href="#iletisim">İletişim</a>
+      </nav>
+    </div>
+  </header>
+
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-content">
+      <small>butikeless kadın giyim</small>
+
+      <h1>Tarzını keşfet,<br>stilini yansıt.</h1>
+
+      <p>
+        Günlük stilinden özel anlarına kadar
+        kendini yansıtan parçaları keşfet.
+      </p>
+
+      <a class="button" href="#urunler">
+        ÜRÜNLERİ KEŞFET
+      </a>
+    </div>
+  </section>
+
+
+  <!-- KATEGORİLER -->
+  <section id="kategoriler">
+
+    <div class="section-title">
+      <span>Kategoriler</span>
+      <h2>Tarzına Uygun</h2>
+    </div>
+
+    <div class="categories">
+
+      <a class="category" href="#urunler">
+        Elbiseler
+      </a>
+
+      <a class="category" href="#urunler">
+        Takımlar
+      </a>
+
+      <a class="category" href="#urunler">
+        Üst Giyim
+      </a>
+
+      <a class="category" href="#urunler">
+        Alt Giyim
+      </a>
+
+    </div>
+  </section>
+
+
+  <!-- ÜRÜNLER -->
+  <section id="urunler">
+
+    <div class="section-title">
+      <span>Yeni Gelenler</span>
+      <h2>Öne Çıkan Ürün</h2>
+    </div>
+
+    <div class="products">
+
+      <div class="product">
+
+        <div class="product-image">
+          <span>Düğmeli Ceket</span>
+        </div>
+
+        <div class="product-info">
+          <h3>Düğmeli Ceket</h3>
+          <div class="price">1200₺</div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- HAKKIMIZDA -->
+  <section class="about" id="hakkimizda">
+
+    <div class="about-inner">
+
+      <div class="section-title">
+        <span>Biz Kimiz?</span>
+        <h2>butikeless</h2>
+      </div>
+
+      <p>
+        Butikeless, kadınların kendi tarzını özgürce yansıtabilmesi
+        için modern ve şık parçalar sunan bir kadın giyim butiğidir.
+        Zamansız tasarımları ve günlük şıklığı bir araya getiriyoruz.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- İLETİŞİM -->
+  <section class="contact" id="iletisim">
+
+    <div class="section-title">
+      <span>İletişim</span>
+      <h2>Bizimle İletişime Geç</h2>
+    </div>
+
+    <div class="contact-box">
+
+      <p>
+        Ürünler hakkında bilgi almak veya sipariş oluşturmak
+        için bizimle iletişime geçebilirsin.
+      </p>
+
+      <a class="phone" href="tel:+905346344962">
+        0534 634 49 62
+      </a>
+
+      <a
+        class="button"
+        href="https://wa.me/905346344962"
+        target="_blank">
+        WHATSAPP'TAN YAZ
+      </a>
+
+    </div>
+
+  </section>
+
+
+  <!-- FOOTER -->
+  <footer>
+    © 2026 <strong>butikeless</strong> — Tüm hakları saklıdır.
+  </footer>
+
+</body>
+</html>
